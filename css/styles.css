@@ -6,193 +6,252 @@ h3,
 p,
 ul,
 li {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Variables de Estilo */
 :root {
- --color-primario: #4caf50;
- --color-primario-oscuro: #45a049;
- --color-secundario: #2196f3;
- --color-secundario-oscuro: #0b7dda;
- --color-texto-principal: #333;
- --color-texto-secundario: #555;
- --color-fondo-principal: #f5f5f5;
- --color-fondo-tarjeta: #fff;
- --color-borde: #eee;
- --fuente-principal: 'Arial', sans-serif;
+  --color-primario: #4caf50;
+  --color-primario-oscuro: #45a049;
+  --color-secundario: #2196f3;
+  --color-secundario-oscuro: #0b7dda;
+  --color-texto-principal: #333;
+  --color-texto-secundario: #555;
+  --color-fondo-principal: #f5f5f5;
+  --color-fondo-tarjeta: #fff;
+  --color-borde: #eee;
+  --fuente-principal: "Arial", sans-serif;
 }
 
 /* Estilos Generales */
 body {
- font-family: var(--fuente-principal);
- line-height: 1.6;
- background-color: var(--color-fondo-principal);
- color: var(--color-texto-secundario);
+  font-family: var(--fuente-principal);
+  line-height: 1.6;
+  background-color: var(--color-fondo-principal);
+  color: var(--color-texto-secundario);
 }
 
 a {
- text-decoration: none;
- color: var(--color-secundario);
- transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--color-secundario);
+  transition: color 0.3s ease;
 }
 
 a:hover {
- color: var(--color-secundario-oscuro);
+  color: var(--color-secundario-oscuro);
 }
 
 img {
- max-width: 100%;
- display: block;
+  max-width: 100%;
+  display: block;
 }
 
 .container {
- max-width: 1200px;
- margin: 0 auto;
- width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
 }
-
 
 /* Header - Bloque */
 .header {
- background-color: var(--color-fondo-tarjeta);
- padding: 1rem;
- box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
- display: flex;
- justify-content: space-between;
- align-items: center;
+  position: relative;
+  background-color: var(--color-fondo-tarjeta);
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Header Elementos */
+.header__menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.header__menu-toggle span {
+  background-color: var(--color-texto-principal);
+  height: 3px;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
 .header__title {
- font-size: 2rem;
- margin-bottom: 0;
- color: var(--color-texto-principal);
+  font-size: 2rem;
+  margin-bottom: 0;
+  color: var(--color-texto-principal);
 }
 
 .header__nav-list {
- list-style: none;
- display: flex;
+  list-style: none;
+  display: none; /* Ocultar en mobile */
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* Colocar debajo del header */
+  left: 0;
+  width: 100%;
+  background-color: var(--color-fondo-tarjeta);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+.header__nav-list--active {
+  display: flex; /* Mostrar cuando la clase esté activa */
 }
 
 .header__nav-item {
- margin-right: 1rem;
+  margin-right: 0; /* Eliminar margen horizontal en mobile */
+  margin-bottom: 0.5rem; /* Margen vertical entre items */
 }
 
 .header__nav-link {
- color: var(--color-texto-secundario);
- transition: color 0.3s ease;
+  display: block;
+  padding: 0.5rem;
+  color: var(--color-texto-secundario);
+  transition: color 0.3s ease;
+}
+.header__nav-link:hover {
+  color: var(--color-secundario);
 }
 
-.header__nav-link:hover {
- color: var(--color-secundario);
+/* Media Query para pantallas más grandes */
+@media (min-width: 768px) {
+  .header__nav-list {
+    display: flex; /* Mostrar horizontalmente */
+    flex-direction: row;
+    position: static; /* Volver al flujo normal */
+    width: auto;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .header__nav-item {
+    margin-right: 1rem; /* Restaurar margen horizontal */
+    margin-bottom: 0;
+  }
+
+  .header__menu-toggle {
+    display: none; /* Ocultar el botón en desktop */
+  }
 }
+
+
 
 /* Main - Bloque */
 .main {
- padding: 2rem;
- margin: 0 auto;
+  padding: 2rem;
+  margin: 0 auto;
 }
 
 /* About - Bloque */
 .about {
- background-color: var(--color-fondo-tarjeta);
- padding: 1.5rem;
- margin-bottom: 2rem;
- box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-fondo-tarjeta);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* About Elementos */
 .about__title {
- font-size: 1.8rem;
- margin-bottom: 1rem;
- color: var(--color-texto-principal);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-texto-principal);
 }
 
 .about__description {
- font-size: 1.1rem;
- color: var(--color-texto-secundario);
+  font-size: 1.1rem;
+  color: var(--color-texto-secundario);
 }
 
 /* Listings - Bloque */
 
 /* Listings Elementos */
 .listings__title {
- font-size: 1.8rem;
- margin-bottom: 1rem;
- color: var(--color-texto-principal);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-texto-principal);
 }
 
 .listings__list {
- list-style: none;
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
- gap: 2rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .listings__item {
- background-color: var(--color-fondo-tarjeta);
- border-radius: 8px;
- box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
- overflow: hidden;
- transition: transform 0.3s ease;
+  background-color: var(--color-fondo-tarjeta);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 .listings__item:hover {
- transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 /* Business Card - Bloque */
 .business-card {
- display: flex;
- flex-direction: column;
- height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* Business Card Elementos */
 .business-card__image {
- height: 200px;
- object-fit: cover;
- margin-bottom: 1rem;
- border-bottom: 1px solid var(--color-borde);
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--color-borde);
 }
 
 .business-card__title {
- font-size: 1.2rem;
- margin-bottom: 0.5rem;
- padding: 1rem;
- color: var(--color-texto-principal);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  color: var(--color-texto-principal);
 }
 
 .business-card__description {
- font-size: 1rem;
- color: var(--color-texto-secundario);
- padding: 1rem;
- flex-grow: 1;
+  font-size: 1rem;
+  color: var(--color-texto-secundario);
+  padding: 1rem;
+  flex-grow: 1;
 }
 
 .business-card__link {
- display: block;
- padding: 0.75rem 1rem;
- background-color: var(--color-primario);
- color: #fff;
- text-align: center;
- border-top: 1px solid var(--color-borde);
- transition: background-color 0.3s ease;
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-primario);
+  color: #fff;
+  text-align: center;
+  border-top: 1px solid var(--color-borde);
+  transition: background-color 0.3s ease;
 }
 
 .business-card__link:hover {
- background-color: var(--color-primario-oscuro);
+  background-color: var(--color-primario-oscuro);
 }
 
 /* Footer - Bloque */
 .footer {
- background-color: var(--color-fondo-tarjeta);
- padding: 1rem;
- text-align: center;
- margin-top: 2rem;
- box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
- color: var(--color-texto-secundario);
+  background-color: var(--color-fondo-tarjeta);
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--color-texto-secundario);
 }
